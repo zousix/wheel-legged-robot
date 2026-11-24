@@ -41,14 +41,10 @@ CAN反馈 → 关节角度 / 轮速 / 节点状态 ───┤
 | CAN 速率 | 1 Mbps |
 | 控制轨迹缓冲 | 1024 帧 |
 
-以上为固件配置值，任务的实际执行时间和抖动还需单独测量。
-
 ## 实机表现
 
 - 连续稳定站立 300 s。
 - 支持前进、后退和旋转。
-
-实机测试对应的固件版本和演示视频还未归档到仓库，复现时需要重新核对板级参数。主机测试目前 7 项通过、3 项未通过，具体问题见 [测试记录](docs/VALIDATION.md)。
 
 ## 目录
 
@@ -61,25 +57,3 @@ esp32-controller/      原控制器参考源码，供算法对照测试使用
 matlab/lqr_k.m          LQR 增益对照文件，供一致性测试使用
 docs/                  构建说明与验证范围
 ```
-
-## 构建与测试
-
-ESP32-S3 使用 ESP-IDF；STM32 使用 Keil MDK 工程。构建入口及板级配置要求见 [构建说明](docs/BUILD.md)。
-
-安装 Python 3 与 GCC 后，在仓库根目录运行以下主机测试；这些测试不连接机器人：
-
-```sh
-python esp32-s3-controller/software/tools/test_control_schedule.py
-python esp32-s3-controller/software/tools/test_motor_can.py
-python esp32-s3-controller/software/tools/test_robot_state.py
-python esp32-s3-controller/software/tools/test_balance_control.py
-python esp32-s3-controller/software/tools/test_lqr_k.py
-```
-
-`capture_*.py` 等脚本会访问串口，部分脚本会下发控制指令，不能作为普通主机单元测试直接批量运行。串口采集脚本另需 `pyserial`。
-
-## 来源与许可证
-
-本项目基于 [Skythinker616/foc-wheel-legged-robot](https://github.com/Skythinker616/foc-wheel-legged-robot) 继续开发，感谢原作者提供的机械、电路和控制方案。我的开发工作及第三方组件见 [来源说明](CREDITS.md)。
-
-本仓库按 [GNU GPL v3](LICENSE) 发布，第三方文件保留各自的许可证与版权声明。

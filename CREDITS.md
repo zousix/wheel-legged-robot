@@ -1,16 +1,16 @@
 # 来源与改动范围
 
-原始项目：[Skythinker616/foc-wheel-legged-robot](https://github.com/Skythinker616/foc-wheel-legged-robot)。原项目包含机械、电路、控制算法和 STM32 FOC 等实现。本仓库是基于该项目的开发整理版本，不代表全套硬件及算法均为独立原创。
+原始项目：[Skythinker616/foc-wheel-legged-robot](https://github.com/Skythinker616/foc-wheel-legged-robot)。我在原项目的机械、电路、控制算法和 STM32 FOC 方案上继续开发，原有源码的版权与来源声明均保留。
 
-本次整理重点保留：
+我主要围绕以下部分进行开发和调试：
 
 - ESP32-S3 / ESP-IDF 控制固件及 FreeRTOS 任务拆分。
 - CAN 电机节点接入、反馈状态管理、通信恢复及控制输出。
 - IMU963RA 采集、姿态与轮速反馈、平衡控制集成和串口调试工具。
 - 主机回归测试及日志分析脚本。
-- 当前工作区的 STM32 驱动修改，保留原代码中的作者说明。
+- STM32 驱动接入、编码器反馈与实机标定调试。
 
-原控制器源码与 LQR 增益文件保留用于对照测试。没有在本整理副本中收录原项目完整的机械、Android 和 Linux 图传模块。
+原控制器源码与 LQR 增益文件用于对照测试。这个仓库主要存放控制固件，没有收录原项目完整的机械、Android 和 Linux 图传模块。
 
 第三方组件：
 
